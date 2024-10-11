@@ -26,7 +26,7 @@ const handler = async (req: Request): Promise<Response> => {
   try {
     if (method === "GET") {
       if (path === "/users") {
-        return new Response("GET request successful", { status: 200 });
+        return new Response(JSON.stringify(userArray), { status: 200 });
       }
       return new Response("GET: Not found", { status: 404 });
     }
@@ -48,6 +48,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Handle DELETE requests
     else if (method === "DELETE") {
+
       return new Response("DELETE request successful", { status: 200 });
     }
 
@@ -69,3 +70,4 @@ function addUsers(payload: User[]): void {
     userArray.push(user);
   });
 }
+
