@@ -27,6 +27,8 @@ const handler = async (req: Request): Promise<Response> => {
     if (method === "GET") {
       if (path === "/users") {
         return new Response(JSON.stringify(userArray), { status: 200 });
+      } else if (path === "/user"){
+        return new Response(JSON.stringify(userArray.filter(e => e.name === url.searchParams.get("name"))), { status: 200 });
       }
       return new Response("GET: Not found", { status: 404 });
     }
